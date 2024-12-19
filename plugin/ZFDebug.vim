@@ -40,8 +40,11 @@ if get(g:, 'zf_vimspector_keymap', 1)
     nmap DS <Plug>VimspectorContinue
     nmap Ds <Plug>VimspectorPause
     nmap DU <Plug>VimspectorStepOut
+    nmap <f9> <Plug>VimspectorStepOut
     nmap DO <Plug>VimspectorStepOver
+    nmap <f10> <Plug>VimspectorStepOver
     nmap DI <Plug>VimspectorStepInto
+    nmap <f11> <Plug>VimspectorStepInto
 
     augroup zf_vimspector_keymap_VimspectorPrompt
         autocmd!
