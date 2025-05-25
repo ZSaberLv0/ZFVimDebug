@@ -36,7 +36,9 @@ if get(g:, 'zf_vimspector_keymap', 1)
     nmap <f4> :call ZFDebugStop()<cr>
     nmap <f5> :call ZFDebugRestart()<cr>
     nmap DN :call vimspector#DownFrame()<cr>
+    nmap <f6> :call vimspector#DownFrame()<cr>
     nmap DM :call vimspector#UpFrame()<cr>
+    nmap <f7> :call vimspector#UpFrame()<cr>
     nmap DS <Plug>VimspectorContinue
     nmap <f8> <Plug>VimspectorContinue
     nmap Ds <Plug>VimspectorPause
