@@ -240,11 +240,15 @@ function! ZFDebug(params)
     endif
 
     let Fn = g:ZFDebug_preset[preset]
-    call vimspector#LaunchWithConfigurations(Fn({
+    let cfg = Fn({
                 \   'preset' : preset,
                 \   'path' : path,
                 \   'args' : args,
-                \ }))
+                \ })
+    if empty(cfg)
+        return 0
+    endif
+    call vimspector#LaunchWithConfigurations(cfg)
     return 1
 endfunction
 function! ZFDebug_presetChoose()

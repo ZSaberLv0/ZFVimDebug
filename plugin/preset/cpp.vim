@@ -15,6 +15,9 @@ function! ZFDebug_preset_cpp(param)
                 \       'args' : args,
                 \       'stopOnEntry#json' : 'false',
                 \       'expressions' : 'native',
+                \       'sourceMap' : {
+                \         '/var/' : '/private/var/',
+                \       },
                 \     },
                 \     'breakpoints' : {
                 \       'exception' : {
