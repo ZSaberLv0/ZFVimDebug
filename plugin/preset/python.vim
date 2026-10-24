@@ -7,23 +7,21 @@ function! ZFDebug_preset_python(param)
     let path = get(a:param, 'path', '')
     let args = get(a:param, 'args', [])
     return {
-                \   'ZFDebug' : {
-                \     'adapter' : 'debugpy',
-                \     'configuration' : {
-                \       'request' : 'launch',
-                \       'python' : path,
-                \       'program' : join(args, ' '),
-                \       'cwd' : getcwd(),
-                \       'stopOnEntry#json' : 'false',
-                \     },
-                \     'breakpoints' : {
-                \       'exception' : {
-                \         'raised' : '',
-                \         'caught' : '',
-                \         'uncaught' : '',
-                \         'userUnhandled' : '',
-                \         'all' : '',
-                \       },
+                \   'adapter' : 'debugpy',
+                \   'configuration' : {
+                \     'request' : 'launch',
+                \     'python' : path,
+                \     'program' : join(args, ' '),
+                \     'cwd' : getcwd(),
+                \     'stopOnEntry#json' : 'false',
+                \   },
+                \   'breakpoints' : {
+                \     'exception' : {
+                \       'raised' : '',
+                \       'caught' : '',
+                \       'uncaught' : '',
+                \       'userUnhandled' : '',
+                \       'all' : '',
                 \     },
                 \   },
                 \ }

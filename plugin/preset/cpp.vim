@@ -7,28 +7,26 @@ function! ZFDebug_preset_cpp(param)
     let path = get(a:param, 'path', '')
     let args = get(a:param, 'args', [])
     return {
-                \   'ZFDebug' : {
-                \     'adapter' : 'CodeLLDB',
-                \     'configuration' : {
-                \       'request' : 'launch',
-                \       'program' : path,
-                \       'args' : args,
-                \       'stopOnEntry#json' : 'false',
-                \       'expressions' : 'native',
-                \       'sourceMap' : {
-                \         '/var/' : '/private/var/',
-                \       },
+                \   'adapter' : 'CodeLLDB',
+                \   'configuration' : {
+                \     'request' : 'launch',
+                \     'program' : path,
+                \     'args' : args,
+                \     'stopOnEntry#json' : 'false',
+                \     'expressions' : 'native',
+                \     'sourceMap' : {
+                \       '/var/' : '/private/var/',
                 \     },
-                \     'breakpoints' : {
-                \       'exception' : {
-                \         'raised' : '',
-                \         'caught' : '',
-                \         'uncaught' : '',
-                \         'userUnhandled' : '',
-                \         'all' : '',
-                \         'cpp_catch' : '',
-                \         'cpp_throw' : '',
-                \       },
+                \   },
+                \   'breakpoints' : {
+                \     'exception' : {
+                \       'raised' : '',
+                \       'caught' : '',
+                \       'uncaught' : '',
+                \       'userUnhandled' : '',
+                \       'all' : '',
+                \       'cpp_catch' : '',
+                \       'cpp_throw' : '',
                 \     },
                 \   },
                 \ }

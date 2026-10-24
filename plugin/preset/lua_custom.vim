@@ -7,25 +7,23 @@ function! ZFDebug_preset_lua_custom(param)
     let path = get(a:param, 'path', '')
     let args = get(a:param, 'args', [])
     return {
-                \   'ZFDebug' : {
-                \     'adapter' : 'lua-local',
-                \     'configuration' : {
-                \       'request' : 'launch',
-                \       'program' : {
-                \         'command' : path,
-                \       },
-                \       'args' : args,
-                \       'cwd' : getcwd(),
-                \       'stopOnEntry#json' : 'false',
+                \   'adapter' : 'lua-local',
+                \   'configuration' : {
+                \     'request' : 'launch',
+                \     'program' : {
+                \       'command' : path,
                 \     },
-                \     'breakpoints' : {
-                \       'exception' : {
-                \         'raised' : '',
-                \         'caught' : '',
-                \         'uncaught' : '',
-                \         'userUnhandled' : '',
-                \         'all' : '',
-                \       },
+                \     'args' : args,
+                \     'cwd' : getcwd(),
+                \     'stopOnEntry#json' : 'false',
+                \   },
+                \   'breakpoints' : {
+                \     'exception' : {
+                \       'raised' : '',
+                \       'caught' : '',
+                \       'uncaught' : '',
+                \       'userUnhandled' : '',
+                \       'all' : '',
                 \     },
                 \   },
                 \ }

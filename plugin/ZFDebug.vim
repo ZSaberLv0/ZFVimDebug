@@ -248,8 +248,31 @@ function! ZFDebug(params)
     if empty(cfg)
         return 0
     endif
-    call vimspector#LaunchWithConfigurations(cfg)
+    let g:ZFDebug_cfgRunning = cfg
+    call vimspector#LaunchWithConfigurations({
+                \   'ZFDebug' : cfg,
+                \ })
     return 1
+endfunction
+augroup ZFDebug_onExit_augroup
+    autocmd!
+    autocmd User VimspectorDebugEnded call ZFDebug_onExit()
+augroup END
+function! ZFDebug_onExit()
+    let Fn_onExit = get(get(g:, 'ZFDebug_cfgRunning', {}), 'onExit', '')
+    if empty(Fn_onExit)
+        return
+    endif
+    let cfg = g:ZFDebug_cfgRunning
+    unlet g:ZFDebug_cfgRunning
+    if type(Fn_onExit) == type('')
+        let Fn = function(Fn_onExit)
+        if !empty(Fn)
+            call Fn(cfg)
+        endif
+    else
+        call Fn_onExit(cfg)
+    endif
 endfunction
 function! ZFDebug_presetChoose()
     let candidates = keys(g:ZFDebug_preset)
@@ -272,6 +295,14 @@ function! ZFDebug_adapterChoose()
         return ''
     endif
     return candidates[choice]
+endfunction
+
+function! ZFDebug_rm(f)
+    if (has('win32') || has('win64')) && !has('unix')
+        call system('rmdir /f/s/q "' . substitute(a:f, '/', '\', 'g') . '"')
+    else
+        call system('rm -rf "' . a:f . '"')
+    endif
 endfunction
 
 function! s:stateSet(key, value)
